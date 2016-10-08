@@ -19,4 +19,8 @@ class PhoneWindow < Window
 	def button_up(id)
 
 	end
+
+	def needs_cursor?
+		return true
+	end
 end
