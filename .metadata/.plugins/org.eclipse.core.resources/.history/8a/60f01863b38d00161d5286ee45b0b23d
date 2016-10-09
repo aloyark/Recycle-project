@@ -1,0 +1,39 @@
+package com.app;
+
+import java.awt.FlowLayout;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+
+public class Window extends JFrame {
+	public Window() {
+		super("Trash Dash");
+		setLookAndFeel();
+		setSize(360, 640);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		FlowLayout flo = new FlowLayout();
+		setLayout(flo);
+		
+		JLabel enterPin = new JLabel("Enter Pin: ", JLabel.RIGHT);
+		add(enterPin);
+		
+		JTextField pin = new JTextField(4);
+		add(pin);
+		
+		
+		
+		
+		setVisible(true);
+		
+	}
+	
+	private void setLookAndFeel() {
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.palf.nimbus.NimbusLookAndFeel");
+		} catch (Exception e) {
+			//If it fails
+		}
+	}
+}

@@ -1,0 +1,40 @@
+package com.app;
+
+import java.awt.FlowLayout;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.UIManager;
+
+public class Window extends JFrame {
+	public Window() throws IOException {
+		super("Trash Dash");
+		setLookAndFeel();
+		setSize(360, 640);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		FlowLayout flo = new FlowLayout();
+		setLayout(flo);
+		
+		String path = "Image1.jpg";
+	    File file = new File(path);
+	    BufferedImage image = ImageIO.read(file);
+	    JLabel label = new JLabel(new ImageIcon(image));
+		
+		
+		setVisible(true);
+		
+	}
+	
+	private void setLookAndFeel() {
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.palf.nimbus.NimbusLookAndFeel");
+		} catch (Exception e) {
+			//If it fails
+		}
+	}
+}

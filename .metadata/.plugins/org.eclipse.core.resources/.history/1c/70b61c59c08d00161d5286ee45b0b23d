@@ -1,0 +1,87 @@
+package com.app;
+
+import java.awt.FlowLayout;
+import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+import javax.swing.UIManager;
+
+public class Window extends JFrame {
+	public static int gold = 0;
+	
+	private static List<Integer> codes = new ArrayList<Integer>();
+	
+	public Window() {
+		
+		//Window
+		super("Trash Dash");
+		setLookAndFeel();
+		setSize(360, 640);
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setLayout(null);
+		//[Window]
+		
+		//Components
+		JLabel enterPin = new JLabel("Enter Pin: ", JLabel.RIGHT);
+		
+		JTextField pin = new JTextField(4);
+		
+		JLabel background = new JLabel(new ImageIcon((Toolkit.getDefaultToolkit().getImage(getClass().getResource("/com/images/Background.jpg")))));
+		
+		codes.add(4012); 
+		codes.add(5716);
+		codes.add(1234);
+		codes.add(7412);
+		codes.add(6123);
+		codes.add(8125);
+		codes.add(5237);
+		codes.add(1823);
+		codes.add(1241);
+		
+		JButton Submit = new JButton();
+		Submit.setText("Submit");
+		
+		Submit.addActionListener(new ActionListener() {
+		    public void actionPerformed(ActionEvent e) { 
+		    	for (int i = 0; i < codes.size(); i++) {
+			    	if (Integer.parseInt(pin.getText()) == codes.get(i)) {
+			    		gold += 5;
+			    		System.out.println(gold);
+			    		codes.remove(i);
+			    	}
+		    	}
+		    }
+		 });
+		//[Components]
+		
+		enterPin.setBounds(-100, 0, 200, 25);
+		pin.setBounds(210, 0, 50, 25);
+		
+		//Adding components
+		add(enterPin);
+		add(pin);
+		add(background);
+		add(Submit);
+		//[Adding components]
+		
+		setVisible(true);
+	}
+	
+	private void setLookAndFeel() {
+		try {
+			UIManager.setLookAndFeel("com.sun.java.swing.palf.nimbus.NimbusLookAndFeel");
+		} catch (Exception e) {
+			//If it fails
+		}
+	}
+}
