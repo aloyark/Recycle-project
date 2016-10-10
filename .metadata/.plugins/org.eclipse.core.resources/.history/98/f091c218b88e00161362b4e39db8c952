@@ -88,7 +88,6 @@ public class Window extends JFrame {
 		//enterPin.setForeground(Color.WHITE);
 		Submit.setFont(font.deriveFont(Font.PLAIN, 15f));
 		pin.setFont(font.deriveFont(Font.PLAIN, 20f));
-		//[Set Fonts]
 		
 		int yOffset = 150;
 		int xOffset = 13;
